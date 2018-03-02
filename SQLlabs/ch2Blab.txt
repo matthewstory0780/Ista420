@@ -1,0 +1,39 @@
+.echo on
+.headers on
+
+--Name: lab2b.sql
+--Author: Matthew Story
+--Date: February 28, 2018
+
+select customerid, companyname, country from customers
+where country in ('USA', 'Canada', 'Mexico');
+
+
+select orderid, orderdate from orders where orderdate like '1998-04-%';
+
+select productname from products where productname like '%sauce%';
+
+select productname from products where productname like '%dried%';
+
+select employeeid, shipcountry, shippeddate from orders
+where shipcountry like'Ger%' and shippeddate like'%-12-%';
+
+select productid, unitprice, quantity,
+(unitprice * quantity) as total_price, discount,
+((unitprice * quantity) - (unitprice * quantity * discount)) as net
+from order_details where productid = 19 and discount > 0;
+
+select titleofcourtesy || ' ' || firstname || ' ' || lastname || '
+ ' || title || '
+  ' from employees;
+  
+  8.
+  
+  select contactname 
+  instr(contactname, instr(contactname, ' ' )) ||
+  ', ' ||
+  substr(contactname, , instr(contactname, ' '))
+  as fullname
+  from customers order by fullanme; 
+  
+sqlite> select julianday ('now') - julianday ( '1990-12-26' ) ;

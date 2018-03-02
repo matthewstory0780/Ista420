@@ -1,0 +1,103 @@
+Microsoft Windows [Version 10.0.16299.248]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\Users\matth>cd desktop
+
+C:\Users\matth\Desktop>cd playpen
+
+C:\Users\matth\Desktop\playpen>sqlite3 exercise1basketball.db
+SQLite version 3.22.0 2018-01-22 18:45:57
+Enter ".help" for usage hints.
+sqlite> create table 'Houston Rockets starting lineup' (
+   ...> number integer,
+   ...> name text,
+   ...> position text,
+   ...> age integer,
+   ...> college text
+   ...> );
+sqlite> .schema 'Houston Rockets starting lineup';
+Usage: .schema ?--indent? ?LIKE-PATTERN?
+sqlite> .schema 'Houston Rockets starting lineup'
+CREATE TABLE IF NOT EXISTS 'Houston Rockets starting lineup' (
+number integer,
+name text,
+position text,
+age integer,
+college text
+);
+sqlite> insert into 'Houston Rockets starting lineup' values (3, 'Chris Paul', 'Point Guard', 32, 'Wake Forest');
+sqlite> insert into 'Houston Rockets starting lineup' values (13, 'James harden', 'Shooting Guard', 28, 'Arizona State');
+sqlite> insert into 'Houston Rockets starting lineup' values (1, 'Trevor Ariza', 'Small Forward', 32, 'UCLA');
+sqlite> insert into 'Houston Rockets starting lineup' values (4, 'P.J. Tucker', 'Power Forward', 32, 'Texas');
+sqlite> insert into 'Houston Rockets starting lineup' values (15, 'Clint Capela', 'Center', 23, 'N/A');
+sqlite> select * from 'Houston Rockets starting lineup';
+3|Chris Paul|Point Guard|32|Wake Forest
+13|James harden|Shooting Guard|28|Arizona State
+1|Trevor Ariza|Small Forward|32|UCLA
+4|P.J. Tucker|Power Forward|32|Texas
+15|Clint Capela|Center|23|N/A
+sqlite> .echo on
+sqlite> .headers on
+.headers on
+sqlite> select .schema 'Houston Rockets starting lineup'
+   ...> ;
+Error: near ".": syntax error
+sqlite> .schema 'Houston Rockets starting lineup';
+.schema 'Houston Rockets starting lineup';
+Usage: .schema ?--indent? ?LIKE-PATTERN?
+sqlite> .schema
+.schema
+CREATE TABLE IF NOT EXISTS 'Houston Rockets starting lineup' (
+number integer,
+name text,
+position text,
+age integer,
+college text
+);
+sqlite> select * from 'Houston Rockets starting lineup';
+select * from 'Houston Rockets starting lineup';
+number|name|position|age|college
+3|Chris Paul|Point Guard|32|Wake Forest
+13|James harden|Shooting Guard|28|Arizona State
+1|Trevor Ariza|Small Forward|32|UCLA
+4|P.J. Tucker|Power Forward|32|Texas
+15|Clint Capela|Center|23|N/A
+sqlite> select * from 'Houston Rockets starting lineup' where age = 32;
+select * from 'Houston Rockets starting lineup' where age = 32;
+number|name|position|age|college
+3|Chris Paul|Point Guard|32|Wake Forest
+1|Trevor Ariza|Small Forward|32|UCLA
+4|P.J. Tucker|Power Forward|32|Texas
+sqlite> select * from 'Houston Rockets starting lineup' where position like 'Shooting Guard';
+select * from 'Houston Rockets starting lineup' where position like 'Shooting Guard';
+number|name|position|age|college
+13|James harden|Shooting Guard|28|Arizona State
+sqlite> select * from 'Houston Rockets starting lineup' where position like 'Point Guard';
+select * from 'Houston Rockets starting lineup' where position like 'Point Guard';
+number|name|position|age|college
+3|Chris Paul|Point Guard|32|Wake Forest
+sqlite> select name from family;
+Error: no such table: family
+sqlite> select name from 'Houston Rockets starting lineup';
+select name from 'Houston Rockets starting lineup';
+name
+Chris Paul
+James harden
+Trevor Ariza
+P.J. Tucker
+Clint Capela
+sqlite> select avg(age) from 'Houston Rockets starting lineup';
+select avg(age) from 'Houston Rockets starting lineup';
+avg(age)
+29.4
+sqlite> sum(age) from family;
+Error: near "sum": syntax error
+sqlite> sum(age) from 'Houston Rockets starting lineup';
+Error: near "sum": syntax error
+sqlite> sum(age) from 'Houston Rockets starting lineup';
+Error: near "sum": syntax error
+sqlite> select sum(age) from 'Houston Rockets starting lineup';
+select sum(age) from 'Houston Rockets starting lineup';
+sum(age)
+147
+sqlite>C:\Users\matth\Desktop\playpen>notepad exercisebasketball.sql < exercisebasketball.sql

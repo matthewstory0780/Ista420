@@ -1,0 +1,68 @@
+C:\Users\matth\Desktop\playpen>sqlite3 myfamily.db
+SQLite version 3.22.0 2018-01-22 18:45:57
+Enter ".help" for usage hints.
+sqlite> create table family (
+   ...> id integer,
+   ...> name text,
+   ...> sex integer,
+   ...> role text,
+   ...> age integer
+   ...> );
+sqlite>  schema family;
+Error: near "schema": syntax error
+sqlite> .schema family
+CREATE TABLE family (
+id integer,
+name text,
+sex integer,
+role text,
+age integer
+);
+sqlite> insert into family values (1, 'Mike', 1, 'father', 47)
+   ...> insert into family values (2, 'Dana', 0, 'mother', 47)
+   ...> insert into family values (3, 'Matt', 1, 'son', 27);
+Error: near "insert": syntax error
+sqlite> insert into family values (3, 'Matt', 1, 'son', 27)
+   ...> ;
+sqlite> insert into family values (1, 'Mike', 1, 'father', 47);
+sqlite> insert into family values (2, 'Dana', 0, 'mother', 47);
+sqlite> insert into family values (3, 'Matt', 1, 'son', 27);
+sqlite> insert into family values (4, 'Claire', 0, 'daughter' 20);
+Error: near "20": syntax error
+sqlite> insert into family values (4, 'Claire', 0, 'daughter' 21);
+Error: near "21": syntax error
+sqlite> insert into family values (4, 'Claire', 0, 'daughter', 21);
+sqlite> insert into family values (5, 'Holly', 0, 'dog', 8);
+sqlite> select * from family
+   ...> ;
+3|Matt|1|son|27
+1|Mike|1|father|47
+2|Dana|0|mother|47
+3|Matt|1|son|27
+4|Claire|0|daughter|21
+5|Holly|0|dog|8
+sqlite> .header on
+sqlite> select * from family;
+id|name|sex|role|age
+1|Mike|1|father|47
+2|Dana|0|mother|47
+3|Matt|1|son|27
+4|Claire|0|daughter|21
+5|Holly|0|dog|8
+sqlite> .exit
+
+C:\Users\matth\Desktop\playpen>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 2A0F-15A8
+
+ Directory of C:\Users\matth\Desktop\playpen
+
+02/22/2018  01:50 PM    <DIR>          .
+02/22/2018  01:50 PM    <DIR>          ..
+02/22/2018  01:50 PM             8,192 myfamily.db
+02/22/2018  09:31 AM           249,856 nw-150810.db
+02/21/2018  09:37 AM           855,552 sqlite3.exe
+               3 File(s)      1,113,600 bytes
+               2 Dir(s)  781,915,213,824 bytes free
+
+C:\Users\matth\Desktop\playpen>
